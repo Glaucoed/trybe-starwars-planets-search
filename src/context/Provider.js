@@ -4,6 +4,7 @@ import MyContext from './myContext';
 
 function Provider({ children }) {
   const [getPlanets, setPlanets] = useState([]);
+  const [nameFilter, setNameFilter] = useState('');
 
   useEffect(() => {
     const requestAPI = async () => {
@@ -15,7 +16,13 @@ function Provider({ children }) {
     requestAPI();
   }, []);
 
-  const contextValue = useMemo(() => ({ getPlanets }), [getPlanets]);
+  const handleNameFilter = ({ target }) => {
+    setNameFilter(target.value);
+  };
+
+  const contextValue = useMemo(() => (
+    { getPlanets, handleNameFilter, nameFilter }
+  ), [getPlanets, nameFilter]);
 
   return (
     <MyContext.Provider value={ contextValue }>
