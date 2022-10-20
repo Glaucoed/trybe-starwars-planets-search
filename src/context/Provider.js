@@ -39,6 +39,7 @@ function Provider({ children }) {
   };
   const handleClickFilter = () => {
     SetFilterAdd([...filterAdd, { colunnFilter, comparisonFilter, numberFilter }]);
+
     const newFiltrado = filtrados.filter((planet) => {
       switch (comparisonFilter) {
       case 'maior que':
