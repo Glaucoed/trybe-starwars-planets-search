@@ -3,7 +3,7 @@ import MyContext from '../context/myContext';
 import Input from './Input';
 import Select from './Select';
 
-const OPTIONCOLUNN = [
+export const OPTIONCOLUNN = [
   'population',
   'orbital_period',
   'diameter',

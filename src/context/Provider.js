@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect, useMemo } from 'react';
 import MyContext from './myContext';
+import { OPTIONCOLUNN } from '../components/Filter';
 
 function Provider({ children }) {
   const [getPlanets, setPlanets] = useState([]);
@@ -54,6 +55,9 @@ function Provider({ children }) {
       }
     });
     setFiltrados(newFiltrado);
+    const index = OPTIONCOLUNN.indexOf(colunnFilter);
+    OPTIONCOLUNN.splice(index, 1);
+    setColunnFilter(OPTIONCOLUNN[0]);
   };
 
   const contextValue = useMemo(() => (
