@@ -52,11 +52,8 @@ function Provider({ children }) {
       case 'menor que':
         return +planet[colunnFilter] < +numberFilter;
 
-      case 'igual a':
-        return +planet[colunnFilter] === +numberFilter;
-
       default:
-        return null;
+        return +planet[colunnFilter] === +numberFilter;
       }
     });
     return newFiltrado;
@@ -101,11 +98,8 @@ function Provider({ children }) {
         case 'menor que':
           return +planet[colunnF] < +numberF;
 
-        case 'igual a':
-          return +planet[colunnF] === +numberF;
-
         default:
-          return null;
+          return +planet[colunnF] === +numberF;
         }
       });
       setFiltrados(removeFilter);
