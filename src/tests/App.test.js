@@ -37,12 +37,12 @@ describe('verificando a cobertura da aplicação ', () => {
   it('testando a coluna population|maior que | 2000000000 , adicao e exclusao', () => {
     const coluna = screen.getByRole('combobox', { name: /coluna:/i });
     const operador = screen.getByRole('combobox', { name: /operador:/i });
-    const number = screen.getByRole('spinbutton', { name: /number:/i });
+    const inputNumber = screen.getByRole('spinbutton', { name: /number:/i });
     const buttonFiltrar = screen.getByRole('button', { name: /filtrar/i });
 
     userEvent.selectOptions(coluna, 'population');
     userEvent.selectOptions(operador, 'maior que');
-    userEvent.type(number, '2000000000');
+    userEvent.type(inputNumber, '2000000000');
     userEvent.click(buttonFiltrar);
 
     const descrptionDelete = screen.getByTestId('filter');
@@ -86,7 +86,7 @@ describe('verificando a cobertura da aplicação ', () => {
 
     await screen.findByText(/population maior que 06000000/i);
 
-    userEvent.clear(screen.getByTestId('value-filter'));
+    userEvent.clear(inputNumber);
 
     userEvent.selectOptions(coluna, 'orbital_period');
     userEvent.selectOptions(operador, 'maior que');
@@ -95,7 +95,7 @@ describe('verificando a cobertura da aplicação ', () => {
 
     await screen.findByText(/orbital_period maior que 364/i);
 
-    userEvent.clear(screen.getByTestId('value-filter'));
+    userEvent.clear(inputNumber);
 
     userEvent.selectOptions(coluna, 'diameter');
     userEvent.selectOptions(operador, 'menor que');
