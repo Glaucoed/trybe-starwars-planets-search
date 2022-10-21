@@ -3,14 +3,6 @@ import MyContext from '../context/myContext';
 import Input from './Input';
 import Select from './Select';
 
-export const OPTIONCOLUNN = [
-  'population',
-  'orbital_period',
-  'diameter',
-  'rotation_period',
-  'surface_water',
-];
-
 const OPTIONOPERADOR = ['maior que', 'menor que', 'igual a'];
 
 export default function Filter() {
@@ -24,6 +16,10 @@ export default function Filter() {
     numberFilter,
     handleNumberFilter,
     handleClickFilter,
+    filterAdd,
+    handleRemoverFilters,
+    handleRemoveOneFilter,
+    OPTIONCOLUNN,
   } = useContext(MyContext);
 
   return (
@@ -75,6 +71,37 @@ export default function Filter() {
           Filtrar
 
         </button>
+        <button
+          type="button"
+          data-testid="button-remove-filters"
+          onClick={ handleRemoverFilters }
+        >
+          Remover todas filtragens
+
+        </button>
+      </div>
+      <div>
+        {
+          filterAdd?.map((filtro) => (
+            <div
+              key={ ` ${filtro.colunnFilter}` }
+              data-testid="filter"
+            >
+              <p>
+                {`${filtro.colunnFilter} 
+              ${filtro.comparisonFilter} 
+              ${filtro.numberFilter}`}
+              </p>
+              <button
+                type="button"
+                onClick={ () => handleRemoveOneFilter(filtro.colunnFilter) }
+              >
+                delete
+
+              </button>
+            </div>
+          ))
+        }
       </div>
     </>
   );
