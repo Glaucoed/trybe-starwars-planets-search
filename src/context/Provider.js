@@ -126,7 +126,7 @@ function Provider({ children }) {
     );
     setColunnFilter(OPTIONCOLUNN[0]);
     setFiltrados(getPlanets);
-  }, [getPlanets]);
+  }, [getPlanets, OPTIONCOLUNN]);
 
   const contextValue = useMemo(() => (
     {
@@ -157,6 +157,8 @@ function Provider({ children }) {
     handleClickFilter,
     handleRemoverFilters,
     handleRemoveOneFilter,
+    OPTIONCOLUNN,
+
   ]);
 
   return (
